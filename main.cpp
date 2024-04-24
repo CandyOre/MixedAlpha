@@ -27,8 +27,8 @@ int main() {
 
 	cout << std::fixed << std::setprecision(1);
 
-    // freopen("./io_file/input", "r", stdin);
-    // freopen("./io_file/output", "w", stdout);
+    freopen("./io_file/input", "r", stdin);
+    freopen("./io_file/output", "w", stdout);
 
     run();
 

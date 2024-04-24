@@ -4,9 +4,12 @@
 #include "UtilityQueryModels.h"
 #include <vector>
 #include <set>
+#include <functional>
+#include <numeric>
 using std::vector;
 using std::set;
 using std::pair;
+using std::function;
 
 vector<int> ind_EF1 (vector<UtilityQueryable*> agents, int agents_amount, int goods_amount) {
     vector<int> result_partition(goods_amount, 1);
@@ -52,9 +55,15 @@ pair<set<int>, set<int>> two_agent_part2bundle (vector<int>& ind_partition) {
 vector<set<int>> part2bundle (vector<int>& ind_partition, int agents_amount) {
     vector<set<int>> bundles(agents_amount);
     for (int i = 0; i < ind_partition.size(); i++) {
-        bundles[ind_partition[i]].insert(i);
+        bundles[ind_partition[i] - 1].insert(i);
     }
     return bundles;
+}
+
+set<int> set02n(int n) {
+    vector<int> vec(n);
+    std::iota(vec.begin(), vec.end(), 0);
+    return set<int>(vec.begin(), vec.end());
 }
 
 #endif

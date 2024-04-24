@@ -62,8 +62,8 @@ class Allocation {
             return bundle;
         }
 
-        set<pair<int, int>> get_div_bundle(int agent_idx) {
-            set<pair<int, int>> bundle;
+        set<pair<double, double>> get_div_bundle(int agent_idx) {
+            set<pair<double, double>> bundle;
             double r = 1;
             for (int i = div_partition.size() - 2; i > -1; i--) {
                 auto [l, idx] = div_partition[i];

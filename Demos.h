@@ -44,27 +44,31 @@ void two_agent_EFa_demo (UtilityQueryable* agent1, UtilityQueryable* agent2, int
     for (int i = 0; i < goods_amount; i++) {
         cout << i << "\t";
     }
-    print("可分割物品[0,1]");
+    print("可分割物品[0,1]\t不可分割比例");
 
     cout << "参与者1效用\t";
     for (int i = 0; i < goods_amount; i++) {
         cout << agent1->get(i) << "\t";
     }
-    print(agent1->eval(0, 1));
+    print(agent1->eval(0, 1), "\t",
+        agent1->get(set02n(goods_amount-1)) / (agent1->eval(0, 1) + agent1->get(set02n(goods_amount-1)))
+    );
 
     cout << "参与者2效用\t";
     for (int i = 0; i < goods_amount; i++) {
         cout << agent2->get(i) << "\t";
     }
-    print(agent2->eval(0, 1));
+    print(agent2->eval(0, 1), "\t",
+        agent2->get(set02n(goods_amount-1)) / (agent2->eval(0, 1) + agent2->get(set02n(goods_amount-1)))
+    );
 
 
     print("2. 算法分配结果");
     Allocation allocation = two_agent_EFa(agent1, agent2, goods_amount);
     set<int> bundle1 = allocation.get_ind_bundle(1);
     set<int> bundle2 = allocation.get_ind_bundle(2);
-    set<pair<int,int>> div_bundle1 = allocation.get_div_bundle(1);
-    set<pair<int,int>> div_bundle2 = allocation.get_div_bundle(2);
+    set<pair<double,double>> div_bundle1 = allocation.get_div_bundle(1);
+    set<pair<double,double>> div_bundle2 = allocation.get_div_bundle(2);
 
     cout << "参与者1的包裹： ";
     for (const auto& idx : bundle1) {
@@ -105,13 +109,16 @@ void identical_agents_EFfa_demo (UtilityQueryable* agent, int agents_amount, int
     for (int i = 0; i < goods_amount; i++) {
         cout << i << "\t";
     }
-    print("可分割物品[0,1]");
+    print("可分割物品[0,1]\t不可分割比例");
 
-    cout << "效用值\t";
+    cout << "参与者效用\t";
     for (int i = 0; i < goods_amount; i++) {
         cout << agent->get(i) << "\t";
     }
-    print(agent->eval(0, 1));
+    print(agent->eval(0, 1), "\t",
+        agent->get(set02n(goods_amount-1)) / (agent->eval(0, 1) + agent->get(set02n(goods_amount-1)))
+    );
+    print(agent->get(set02n(goods_amount-1)));
 
     print("2. 算法分配结果");
     Allocation allocation = identical_agents_EFfa(agent, agents_amount, goods_amount);
@@ -133,9 +140,10 @@ void identical_agents_EFfa_demo (UtilityQueryable* agent, int agents_amount, int
         cout << "包裹" << i << "\t";
     }
     cout << endl;
-    cout << "效用值\t";
+
+    cout << "参与者效用\t";
     for (int i = 0; i < agents_amount; i++) {
-        cout << allocation.get_utility(i + 1, agent);
+        cout << allocation.get_utility(i + 1, agent) << "\t";
     }
     cout << endl;
 }
