@@ -9,20 +9,6 @@
 using std::vector;
 using std::set;
 
-vector<int> two_agent_ind_EF1 (UtilityQueryable* agent1, UtilityQueryable* agent2, int goods_amount) {
-    vector<int> result_partition(goods_amount, 1);
-    double utility1 = 0, utility2 = 0;
-    for (int i = 0; i < goods_amount; i++) {
-        if (utility1 > utility2) {
-            result_partition[i] = 2;
-            utility2 += agent2->get(i);
-        } else {
-            utility1 += agent1->get(i);
-        }
-    }
-    return result_partition;
-}
-
 Allocation two_agent_EFa (UtilityQueryable* agent1, UtilityQueryable* agent2, int goods_amount) {
     Allocation allocation(goods_amount);
     // initialize with EF1 allocation
