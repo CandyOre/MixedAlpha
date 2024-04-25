@@ -12,10 +12,10 @@ class HomoDivUnitIndFunction: public UtilityQueryable {
             for (auto& e : ind_utility) e = 1;
         }
         // divisible goods
-        const double eval(double left, double right) {
+        double eval(double left, double right) const {
             return right - left;
         }
-        const double cut(double left, double target) {
+        double cut(double left, double target) const {
             return std::min(1., left + target);
         }
 };
@@ -32,10 +32,10 @@ class HomoDivIncIndFunction : public UtilityQueryable {
             }
         }
         // divisible goods
-        const double eval(double left, double right) {
+        double eval(double left, double right) const {
             return (right - left) * div_value;
         }
-        const double cut(double left, double target) {
+        double cut(double left, double target) const {
             return std::min(1., left + target / div_value);
         }
     private:

@@ -11,14 +11,14 @@ void run() {
 
     // ind_ef1_order_test();
 
-    // int goods_amount = 5;
-    // UtilityQueryable* agent1 = new HomoDivUnitIndFunction(goods_amount);
-    // UtilityQueryable* agent2 = new HomoDivUnitIndFunction(goods_amount);
-    // two_agent_EFa_demo(agent1, agent2, goods_amount);
+    int goods_amount = 5;
+    UtilityQueryable* agent1 = new HomoDivUnitIndFunction(goods_amount);
+    UtilityQueryable* agent2 = new HomoDivUnitIndFunction(goods_amount);
+    two_agent_EFa_demo(agent1, agent2, goods_amount);
 
-    int goods_amount = 10, agents_amount = 4;
-    auto agent = new HomoDivIncIndFunction(goods_amount, 0, 10);
-    identical_agents_EFfa_demo(agent, 4, goods_amount);
+    // int goods_amount = 10, agents_amount = 4;
+    // auto agent = new HomoDivIncIndFunction(goods_amount, 0, 10);
+    // identical_agents_EFfa_demo(agent, 4, goods_amount);
 }
 
 int main() {

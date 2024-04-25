@@ -4,6 +4,7 @@
 #include "UtilityQueryModels.h"
 #include "Agent2EFa.h"
 #include "IdenticalAgentsEFfa.h"
+#include "Propa.h"
 #include <vector>
 #include <set>
 #include <iostream>
@@ -50,17 +51,13 @@ void two_agent_EFa_demo (UtilityQueryable* agent1, UtilityQueryable* agent2, int
     for (int i = 0; i < goods_amount; i++) {
         cout << agent1->get(i) << "\t";
     }
-    print(agent1->eval(0, 1), "\t",
-        agent1->get(set02n(goods_amount-1)) / (agent1->eval(0, 1) + agent1->get(set02n(goods_amount-1)))
-    );
+    print(agent1->eval(0, 1), "\t", agent1->alpha());
 
     cout << "参与者2效用\t";
     for (int i = 0; i < goods_amount; i++) {
         cout << agent2->get(i) << "\t";
     }
-    print(agent2->eval(0, 1), "\t",
-        agent2->get(set02n(goods_amount-1)) / (agent2->eval(0, 1) + agent2->get(set02n(goods_amount-1)))
-    );
+    print(agent2->eval(0, 1), "\t", agent2->alpha());
 
 
     print("2. 算法分配结果");
@@ -115,9 +112,7 @@ void identical_agents_EFfa_demo (UtilityQueryable* agent, int agents_amount, int
     for (int i = 0; i < goods_amount; i++) {
         cout << agent->get(i) << "\t";
     }
-    print(agent->eval(0, 1), "\t",
-        agent->get(set02n(goods_amount-1)) / (agent->eval(0, 1) + agent->get(set02n(goods_amount-1)))
-    );
+    print(agent->eval(0, 1), "\t", agent->alpha());
     print(agent->get(set02n(goods_amount-1)));
 
     print("2. 算法分配结果");
@@ -146,6 +141,10 @@ void identical_agents_EFfa_demo (UtilityQueryable* agent, int agents_amount, int
         cout << allocation.get_utility(i + 1, agent) << "\t";
     }
     cout << endl;
+}
+
+void propa_demo (vector<UtilityQueryable*> agents, int agents_amount, int goods_amount) {
+    
 }
 
 

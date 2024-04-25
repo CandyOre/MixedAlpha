@@ -3,14 +3,11 @@
 
 #include "UtilityQueryModels.h"
 #include "Allocation.h"
-#include "Utils.h"
+#include "IndivisibleEF1.h"
 #include <vector>
 #include <set>
 using std::vector;
 using std::set, std::multiset;
-
-#include <iostream>
-using std::cin, std::cout, std::endl;
 
 Allocation identical_agents_EFfa (UtilityQueryable* agent, int agents_amount, int goods_amount) {
     Allocation allocation(goods_amount);
