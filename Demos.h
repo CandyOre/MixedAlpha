@@ -45,7 +45,7 @@ void two_agent_EFa_demo (UtilityQueryable* agent1, UtilityQueryable* agent2, int
     for (int i = 0; i < goods_amount; i++) {
         cout << i << "\t";
     }
-    print("可分割物品[0,1]\t不可分割比例");
+    print("[0,1]\t不可分割比例");
 
     cout << "参与者1效用\t";
     for (int i = 0; i < goods_amount; i++) {
@@ -106,14 +106,14 @@ void identical_agents_EFfa_demo (UtilityQueryable* agent, int agents_amount, int
     for (int i = 0; i < goods_amount; i++) {
         cout << i << "\t";
     }
-    print("可分割物品[0,1]\t不可分割比例");
+    print("[0,1]\t不可分割比例");
 
     cout << "参与者效用\t";
     for (int i = 0; i < goods_amount; i++) {
         cout << agent->get(i) << "\t";
     }
     print(agent->eval(0, 1), "\t", agent->alpha());
-    print(agent->get(set02n(goods_amount-1)));
+    print(agent->get(set02n(goods_amount)));
 
     print("2. 算法分配结果");
     Allocation allocation = identical_agents_EFfa(agent, agents_amount, goods_amount);
@@ -144,7 +144,55 @@ void identical_agents_EFfa_demo (UtilityQueryable* agent, int agents_amount, int
 }
 
 void propa_demo (vector<UtilityQueryable*> agents, int agents_amount, int goods_amount) {
-    
+    print("==== 求解实例满足PROPa指标的分配算法的演示 ====");
+
+
+    print("1. 参与者的物品效用表格：");
+    cout << "物品编号\t\t";
+    for (int i = 0; i < goods_amount; i++) {
+        cout << i << "\t";
+    }
+    print("[0,1]\t不可分割比例");
+
+    for (int i = 0; i < agents_amount; i++) {
+        cout << "参与者" << i + 1 << "的效用\t";
+        auto& agent = agents[i];
+        for (int i = 0; i < goods_amount; i++) {
+            cout << agent->get(i) << "\t";
+        }
+        print(agent->eval(0, 1), "\t", agent->alpha());
+        // print(agent->get(set02n(goods_amount)));
+    }
+
+    print("2. 算法分配结果");
+    Allocation allocation = propa(agents, agents_amount, goods_amount);
+    for (int i = 0; i < agents_amount; i++) {
+        cout << "参与者 " << i << " 的包裹：";
+        for (const auto& e : allocation.get_ind_bundle(i + 1)) {
+            cout << e << " ";
+        }
+        for (const auto& [l, r] : allocation.get_div_bundle(i + 1)) {
+            cout << "[" << l << ", " << r << ")" << " ";
+        }
+        cout << endl;
+    }
+
+    print("3. 效用函数水平");
+
+    cout << "包裹编号\t";
+    for (int i = 0; i < agents_amount; i++) {
+        cout << "B" << i << "\t";
+    }
+    cout << endl;
+
+    for (int i = 0; i < agents_amount; i++) {
+        cout << "参与者" << i + 1 << "效用\t";
+        auto& agent = agents[i];
+        for (int i = 0; i < agents_amount; i++) {
+            cout << allocation.get_utility(i + 1, agent) << "\t";
+        }
+        cout << endl;
+    }
 }
 
 

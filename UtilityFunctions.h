@@ -42,5 +42,24 @@ class HomoDivIncIndFunction : public UtilityQueryable {
         double div_value;
 };
 
+class HomoDivCustIndFunction : public UtilityQueryable {
+    public:
+        // init
+        HomoDivCustIndFunction(vector<double> _ind_utility, double _div_value) {
+            ind_amount = _ind_utility.size();
+            ind_utility = _ind_utility;
+            div_value = _div_value;
+        }
+        // divisible goods
+        double eval(double left, double right) const {
+            return (right - left) * div_value;
+        }
+        double cut(double left, double target) const {
+            return std::min(1., left + target / div_value);
+        }
+    private:
+        double div_value;
+};
+
 
 #endif

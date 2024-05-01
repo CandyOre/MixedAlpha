@@ -29,12 +29,12 @@ class UtilityQueryable {
             return sum;
         }
         double alpha() const {
-            double uM = get(set02n(ind_amount-1)), uC = eval(0, 1);
+            double uM = get(set02n(ind_amount)), uC = eval(0, 1);
             return uM / (uM + uC);
         }
     protected:
         int ind_amount;
-        std::vector<int> ind_utility;
+        std::vector<double> ind_utility;
 };
 
 #endif
