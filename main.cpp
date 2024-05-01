@@ -27,7 +27,6 @@ void run() {
     auto agent4 = new HomoDivCustIndFunction(vector<double>({7, 6, 4, 6, 7, 4, 6, 7, 5, 6, 5, 7, 5, 7, 4, 7, 3, 5, 6, 4}), 8);
     // auto agent4 = new HomoDivCustIndFunction(vector<double>({5, 6, 7, 5, 4, 3}), 8);
     propa_demo({agent1, agent2, agent3, agent4}, agents_amount, goods_amount);
-
 }
 
 int main() {
