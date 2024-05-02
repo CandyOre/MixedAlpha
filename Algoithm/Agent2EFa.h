@@ -1,8 +1,8 @@
 #ifndef AGENT2_EFa
 #define AGENT2_EFa
 
-#include "UtilityQueryModels.h"
-#include "Allocation.h"
+#include "../Model/UtilityQueryModels.h"
+#include "../Model/Allocation.h"
 #include "IndivisibleEF1.h"
 #include <vector>
 #include <set>

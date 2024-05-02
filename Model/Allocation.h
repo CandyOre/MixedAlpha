@@ -2,7 +2,7 @@
 #define ALLOCATION
 
 #include "UtilityQueryModels.h"
-#include "Utils.h"
+#include "../Utils.h"
 #include <vector>
 #include <set>
 using std::vector;

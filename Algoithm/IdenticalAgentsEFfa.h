@@ -1,8 +1,8 @@
 #ifndef IDENTICAL_AGENT_EFfa
 #define IDENTICAL_AGENT_EFfa
 
-#include "UtilityQueryModels.h"
-#include "Allocation.h"
+#include "../Model/UtilityQueryModels.h"
+#include "../Model/Allocation.h"
 #include "IndivisibleEF1.h"
 #include <vector>
 #include <set>

@@ -1,7 +1,7 @@
 #ifndef UtilityQueryModel
 #define UtilityQueryModel
 
-#include "Utils.h"
+#include "../Utils.h"
 #include <vector>
 #include <set>
 #include <algorithm>

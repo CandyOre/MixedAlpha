@@ -1,10 +1,10 @@
 #ifndef DEMOS
 #define DEMOS
 
-#include "UtilityQueryModels.h"
-#include "Agent2EFa.h"
-#include "IdenticalAgentsEFfa.h"
-#include "Propa.h"
+#include "./Model//UtilityQueryModels.h"
+#include "./Algoithm/Agent2EFa.h"
+#include "./Algoithm/IdenticalAgentsEFfa.h"
+#include "./Algoithm/Propa.h"
 #include <vector>
 #include <set>
 #include <iostream>

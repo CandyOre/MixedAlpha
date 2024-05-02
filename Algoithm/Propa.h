@@ -1,9 +1,9 @@
 #ifndef PROPa
 #define PROPa
 
-#include "UtilityQueryModels.h"
-#include "Allocation.h"
-#include "Utils.h"
+#include "../Model/UtilityQueryModels.h"
+#include "../Model/Allocation.h"
+#include "../Utils.h"
 #include <vector>
 #include <set>
 using std::vector;
