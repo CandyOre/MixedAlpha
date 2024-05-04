@@ -12,6 +12,11 @@ using std::set, std::multiset;
 Allocation propa (vector<UtilityQueryable*> agents, int agents_amount, int goods_amount) {
     Allocation allocation(goods_amount);
 
+    vector<int> total_utility(agents_amount, 0);
+    for (int i = 0; i < agents_amount; i++) {
+        total_utility[i] = agents[i]->get(set02n(goods_amount)) + agents[i]->eval(0, 1);
+    }
+
     set<int> agents_set = set02n(agents_amount);
     int good_idx = 0;
     double cake_left = 0;
@@ -33,7 +38,7 @@ Allocation propa (vector<UtilityQueryable*> agents, int agents_amount, int goods
                     }
                     if (
                         agents[i]->get(bundle) 
-                        >= agents[i]->get(set02n(goods_amount)) / agents_amount - agents[i]->alpha() * agents[i]->get(j)
+                        >= total_utility[i] / agents_amount - agents[i]->alpha() * agents[i]->get(j)
                     ) {
                         satisfied_agent = i;
                         bundle.erase(good_idx);
@@ -59,7 +64,7 @@ Allocation propa (vector<UtilityQueryable*> agents, int agents_amount, int goods
                 }
                 if (
                     agents[i]->get(bundle) + agents[i]->eval(cake_left, 1)
-                    >= agents[i]->get(set02n(goods_amount)) / agents_amount - agents[i]->alpha() * agents[i]->get(j)
+                    >= total_utility[i]  / agents_amount - agents[i]->alpha() * agents[i]->get(j)
                 ) {
                     feasible_agent = i;
                     enough_cake = true;
@@ -79,7 +84,7 @@ Allocation propa (vector<UtilityQueryable*> agents, int agents_amount, int goods
                     if (bundle.count(j)) continue;
                     double y = agents[i]->cut(
                         cake_left, 
-                        agents[i]->get(set02n(goods_amount)) / agents_amount 
+                        total_utility[i]  / agents_amount 
                             - agents[i]->alpha() * agents[i]->get(j) 
                             - agents[i]->get(bundle)
                     );

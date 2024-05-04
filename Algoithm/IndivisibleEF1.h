@@ -12,7 +12,7 @@ using std::pair;
 using std::function;
 
 
-vector<int> ind_EF1_naive (vector<UtilityQueryable*> agents, int agents_amount, int goods_amount) {
+vector<int> ind_EF1_naive (vector<UtilityQueryable*>& agents, int agents_amount, int goods_amount) {
     vector<int> result_partition(goods_amount, 1);
 
     vector<bool> allocated(goods_amount, false);
@@ -36,7 +36,7 @@ vector<int> ind_EF1_naive (vector<UtilityQueryable*> agents, int agents_amount, 
     return result_partition;
 }
 
-vector<int> ind_EF1_set (vector<UtilityQueryable*> agents, int agents_amount, int goods_amount) {
+vector<int> ind_EF1_set (vector<UtilityQueryable*>& agents, int agents_amount, int goods_amount) {
     vector<int> result_partition(goods_amount, 1);
 
     // order preprocess
@@ -65,7 +65,7 @@ vector<int> ind_EF1_set (vector<UtilityQueryable*> agents, int agents_amount, in
     return result_partition;
 }
 
-vector<int> ind_EF1_ptr (vector<UtilityQueryable*> agents, int agents_amount, int goods_amount) {
+vector<int> ind_EF1_ptr (vector<UtilityQueryable*>& agents, int agents_amount, int goods_amount) {
     vector<int> result_partition(goods_amount, 1);
 
     vector<vector<int>> table(agents_amount, vector<int>(goods_amount));

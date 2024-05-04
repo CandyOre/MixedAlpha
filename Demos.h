@@ -87,7 +87,6 @@ void two_agent_EFa_demo (UtilityQueryable* agent1, UtilityQueryable* agent2, int
 
 
     print("3. 效用函数水平，检查是否满足公平指标");
-    std::cerr << "run utility level\n";
     cout << "包裹编号\t" << "包裹1\t" << "包裹2" << endl;;
     cout << "参与者1效用\t"
          << allocation.get_utility(1, agent1) << "\t"
@@ -184,6 +183,13 @@ void propa_demo (vector<UtilityQueryable*> agents, int agents_amount, int goods_
         cout << "B" << i << "\t";
     }
     cout << endl;
+
+    // allocation.set_ind_partition(94, 1);
+    // allocation.set_ind_partition(95, 2);
+    // allocation.set_ind_partition(96, 3);
+    // allocation.set_ind_partition(97, 4);
+    // allocation.set_ind_partition(98, 1);
+    // allocation.set_ind_partition(99, 2);
 
     for (int i = 0; i < agents_amount; i++) {
         cout << "参与者" << i + 1 << "效用\t";
