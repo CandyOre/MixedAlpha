@@ -63,4 +63,13 @@ private:
     std::chrono::time_point<std::chrono::high_resolution_clock> _start;
 };
 
+#include <cstdlib>
+vector<double> gen_utility_profile(int goods_amount, int mu, int r) {
+    vector<double> vec;
+    for (int i = 0; i < goods_amount; i++) {
+        vec.push_back(rand() % (2 * r) + mu - r);
+    }
+    return vec;
+}
+
 #endif

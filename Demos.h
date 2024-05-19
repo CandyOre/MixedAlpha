@@ -199,6 +199,34 @@ void propa_demo (vector<UtilityQueryable*> agents, int agents_amount, int goods_
         }
         cout << endl;
     }
+
+    print("4. 正确性检验");
+
+    vector<int> total_utility(agents_amount, 0);
+    for (int i = 0; i < agents_amount; i++) {
+        total_utility[i] = agents[i]->get(set02n(goods_amount)) + agents[i]->eval(0, 1);
+    }
+
+    for (int i = 0; i < agents_amount; i++) {
+        auto& agent = agents[i];
+        auto bundle = allocation.get_ind_bundle(i + 1);
+        bool pass = false;
+        for (int j = 0; j < goods_amount; j++) {
+            if (bundle.contains(j)) continue;
+            if (
+                allocation.get_utility(i + 1, agent) + agent->get(j) * agent->alpha() 
+                >= total_utility[i] / agents_amount
+            ) {
+                pass = true;
+                break;
+            }
+        }
+        if (!pass) {
+            cout << "参与者" << i + 1 << "不满足条件，检验失败" << endl;
+            return;
+        }
+    }
+    cout << "通过" << endl;
 }
 
 
